@@ -16,7 +16,7 @@ end
 OldPreloadAsync = hookfunction(ContentProvider.PreloadAsync, function(self, ...)
     local args = {...}
 
-    if typeof(args[1]) ~= "table" then 
+    if not args[1] or typeof(args[1]) ~= "table" then 
         return OldPreloadAsync(self, ...)
     end
 
@@ -44,3 +44,5 @@ OldPreloadAsync = hookfunction(ContentProvider.PreloadAsync, function(self, ...)
 
     return OldPreloadAsync(self, ...)
 end)
+
+
